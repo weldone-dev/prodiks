@@ -1,0 +1,11 @@
+
+.image {
+  @apply w-full relative  mt-[50px]  order-2;
+  @apply md:mt-0 h-[300px];
+  @apply xl:order-1 xl:row-start-1 xl:row-end-3 xl:col-span-5;
+  &:after {
+    @apply content-[''] block absolute w-[252px] h-[195px] bg-transparent border border-[#0C0C0C] rounded-[20px] bottom-[46px] -left-[13px] -z-10;
+    @apply md:w-[352px] md:h-[269px] md:-bottom-[50px] md:-left-[29px];
+    @apply xl:w-[412px] xl:h-[269px] xl:-bottom-[46px] xl:-left-[46px];
+  }
+}
