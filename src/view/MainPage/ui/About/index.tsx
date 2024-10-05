@@ -22,7 +22,7 @@ export function About() {
 
                 <div className={styles.image}>
                     <Image
-                        src="/about-images.jpg"
+                        src="/images/about-images.jpg"
                         alt="Lead and Tin Products"
                         className="rounded-[20px] shadow-md w-auto xl:w-full h-full object-cover ml-[3px] m-[18px] xl:m-0 max-h-[216px] md:max-h-[352px]"
                         width={482}

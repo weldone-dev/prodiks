@@ -1,0 +1,1 @@
+export const positionContact: number[] = [59.789484, 30.181588];

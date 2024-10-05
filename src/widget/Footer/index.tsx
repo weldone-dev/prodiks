@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import {navFooterList} from "@/features/data/api/getNavList";
+import {OrderModalTrigger} from "@/features/modal/ui/Modal/OrderModalTrigger";
 
 
 
@@ -11,7 +12,7 @@ export function Footer () {
             <div className={"container text-white grid md:grid-cols-2 gap-[60px]"}>
                 <div>
                     <Link href={"/"} className={"flex flex-nowrap items-center"}>
-                        <Image src={"/logo.png"} alt={"prodiks logo"} width={60} height={60}/>
+                        <Image src={"/images/logo.png"} alt={"prodiks logo"} width={60} height={60}/>
                         <span className={"text-[#68BAB5] text-[13px] font-bold font-montserrat"}>Продикс</span>
                     </Link>
                 </div>
@@ -31,11 +32,7 @@ export function Footer () {
                                     href={"tel:+7(812)677-00-16"}>+7 (812) 677-00-16</a></p>
                 </div>
                 <div>
-                    <button
-                        className={"bg-[#275E63] text-[#FFFFFF] text-[13px] font-medium font-montserrat py-[11px] px-[46px] my-auto hover:bg-[#28696D] active:bg-[#0C0C0C] transition duration-150 ease-in-out"}
-                    >
-                        Заказать
-                    </button>
+                    <OrderModalTrigger />
                 </div>
             </div>
         </footer>

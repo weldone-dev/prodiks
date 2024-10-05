@@ -1,15 +1,16 @@
 "use client"
+import cn from "clsx";
+import {useState} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import {usePathname} from 'next/navigation';
-import {useState} from "react";
-import cn from "clsx";
+import {CartIcon} from "@/shared/ui/CartIcon";
 import {navBarList} from "@/features/data/api/getNavList";
-
+import {OrderModalTrigger} from "@/features/modal/ui/Modal/OrderModalTrigger";
 
 
 interface IProps {
-    className?: string
+    className?: string;
 }
 
 export function NavBar({className}: IProps) {
@@ -27,21 +28,24 @@ export function NavBar({className}: IProps) {
             <div className={'container flex justify-between'}>
                 <div>
                     <Link href={"/"} className={"flex flex-nowrap items-center"}>
-                        <Image src={"/logo.png"} alt={"prodiks logo"} width={60} height={60}/>
+                        <Image src={"/images/logo.png"} alt={"prodiks logo"} width={60} height={60}/>
                         <span className={"text-[#286067] text-[13px] font-bold font-montserrat"}>Продикс</span>
                     </Link>
                 </div>
+                <Link href={"/cart"} className={"lg:hidden h-full ml-auto my-auto mr-[25px]"}>
+                    <CartIcon count={5} width={20} height={20}/>
+                </Link>
                 <button
                     className={"lg:hidden flex flex-col items-center justify-center p-2"}
                     onClick={openMenu}
                     title="Открыть меню"
                 >
                     <div
-                        className={`w-6 h-0.5 bg-[#0C0C0C] mb-1 transition-transform duration-300 ${isMenuOpen ? "rotate-45 translate-y-1" : ""}`}></div>
+                        className={cn("w-6 h-0.5 bg-[#0C0C0C] mb-1 transition-transform duration-300", isMenuOpen && "rotate-45 translate-y-1")}/>
                     <div
-                        className={`w-5 h-0.5 bg-[#0C0C0C] mb-1 self-end transition-opacity duration-300 ${isMenuOpen ? "opacity-0" : ""}`}></div>
+                        className={cn("w-5 h-0.5 bg-[#0C0C0C] mb-1 self-end transition-opacity duration-300", isMenuOpen && "opacity-0")}/>
                     <div
-                        className={`w-6 h-0.5 bg-[#0C0C0C] transition-transform duration-300 ${isMenuOpen ? "-rotate-45 -translate-y-1" : ""}`}></div>
+                        className={cn("w-6 h-0.5 bg-[#0C0C0C] transition-transform duration-300", isMenuOpen && "-rotate-45 -translate-y-1")}/>
                 </button>
                 <nav className={"hidden lg:flex items-center"}>
                     <ul className={"flex justify-center gap-[35px] text-[#0C0C0C] text-[13px] font-montserrat leading-[16px]"}>
@@ -59,16 +63,15 @@ export function NavBar({className}: IProps) {
                                     }
                                 )}
                             >
-                                <Link href={item.url} data-ar={pathname}>{item.text} </Link></li>
+                                <Link href={item.url} data-b={""}>{item.text}</Link></li>
                         ))}
                     </ul>
                 </nav>
                 <div className={"hidden lg:flex"}>
-                    <button
-                        className={"bg-[#275E63] text-[#FFFFFF] text-[13px] font-medium font-montserrat py-[11px] px-[46px] my-auto hover:bg-[#28696D] active:bg-[#0C0C0C] transition duration-150 ease-in-out"}
-                    >
-                        Заказать
-                    </button>
+                    <Link href={"/cart"} className={"h-full flex items-center mr-[50px]"}>
+                        <CartIcon count={5}/>
+                    </Link>
+                    <OrderModalTrigger/>
                 </div>
             </div>
             <MobileNav isMenuOpen={isMenuOpen} closeMenu={closeMenu}/>
@@ -85,7 +88,7 @@ function MobileNav({isMenuOpen, closeMenu}: { isMenuOpen: boolean, closeMenu: ()
             <div className={"container h-full"}>
                 <div className={"flex items-center justify-between"}>
                     <Link href={"/"} className={"flex flex-nowrap items-center"}>
-                        <Image src={"/logo.png"} alt={"prodiks logo"} width={60} height={60} />
+                        <Image src={"/images/logo.png"} alt={"prodiks logo"} width={60} height={60}/>
                         <span className={"text-[#33848A] text-[13px] font-bold font-montserrat"}>Продикс</span>
                     </Link>
                     <div>
@@ -108,10 +111,7 @@ function MobileNav({isMenuOpen, closeMenu}: { isMenuOpen: boolean, closeMenu: ()
                         ))}
                     </ul>
                 </nav>
-
             </div>
-
-
         </div>
     )
 }

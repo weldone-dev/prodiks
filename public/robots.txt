@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+Sitemap: https://www.prodiks.ru/sitemap.xml
+Host: https://www.prodiks.ru

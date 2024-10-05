@@ -12,7 +12,7 @@ export function Button ({children, className="", x_type, ...props}: IProps) {
         "bg-[#0C0C0C] border-[#0C0C0C] text-white text-[13px] font-medium leading-[16px] transition duration-150 ease-in-out hover:bg-transparent hover:text-[#0C0C0C] hover:border": x_type==="secondary",
         "bg-transparent border border-white text-white text-[13px] font-medium leading-[16px] transition duration-150 ease-in-out hover:bg-white hover:text-black hover:border": x_type==="tertiary",
 
-    }, "", className)} {...props} >
+    }, className)} {...props} >
         {children}
     </button>
 }

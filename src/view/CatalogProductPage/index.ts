@@ -1,0 +1,1 @@
+export {CatalogProductPage} from "./ui/ProductNamePage";

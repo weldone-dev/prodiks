@@ -1,9 +1,11 @@
-import cn from 'clsx';
 import styles from "./styles.module.scss";
 import {Button} from "@/widget/Button";
+import {SecondaryOrderButton} from "@/features/modal/ui/Modal/SecondaryOrderButton";
+import {scrollToElement} from "@/shared/urils/scrollTo";
 
 
 export function MainHeader() {
+
     return (
         <section className={styles.header}>
             <div className={"container flex flex-col justify-between max-h-[900px] h-full"}>
@@ -36,8 +38,14 @@ export function MainHeader() {
                             перспективных отношений.
                         </p>
                         <div className="mt-6 gap-[13px] flex flex-wrap">
-                            <Button x_type={"primary"} className={"w-[152px] h-[46px]"}>Связаться</Button>
-                            <Button x_type={"secondary"} className={"w-[152px] h-[46px]"}>Заказать</Button>
+                            <Button
+                                x_type={"primary"}
+                                className={"w-[152px] h-[46px]"}
+                                onClick={()=>scrollToElement("terms-of-cooperation", -500)}
+                            >
+                                Связаться
+                            </Button>
+                            <SecondaryOrderButton />
                         </div>
                     </div>
                 </article>
